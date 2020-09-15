@@ -41,9 +41,13 @@ public class Bus extends Entity {
     }
 
     private void depart(){
-        System.out.format("Bus %d departed with:\n",id);
-        for (Rider rider:riders) {
-            System.out.format("\t %d\n",rider.getEntityId());
+        if (riders.size() == 0){
+            System.out.format("Bus %d departed without riders\n",id);
+        } else {
+            System.out.format("Bus %d departed with:\n",id);
+            for (Rider rider:riders) {
+                System.out.format("\t %d\n", rider.getEntityId());
+            }
         }
     }
 
