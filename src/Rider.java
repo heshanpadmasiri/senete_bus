@@ -1,4 +1,4 @@
-public class Rider implements Entity{
+public class Rider extends Entity {
     private Environment environment;
     private static int lastId=-1;
     private final int id;
@@ -9,13 +9,11 @@ public class Rider implements Entity{
         lastId++;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     @Override
     public void run() {
-        System.out.format("Rider id%d arrived\n",id);
+        System.out.format("Rider %d arrived\n",id);
         try {
             this.environment.waitingMutux.acquire();
             this.environment.waitingQueue.add(this);
@@ -31,7 +29,12 @@ public class Rider implements Entity{
     }
 
     public void boardBus(Bus bus) {
-        System.out.format("Rider %d boarded bus %d\n", this.id, bus.getId());
+        System.out.format("Rider %d boarded bus %d\n", this.id, bus.getEntityId());
         bus.board(this);
+    }
+
+    @Override
+    public int getEntityId() {
+        return this.id;
     }
 }

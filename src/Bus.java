@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Bus implements Entity{
+public class Bus extends Entity {
     private final Environment environment;
     private static int lastId=-1;
     private final int id;
@@ -13,13 +13,9 @@ public class Bus implements Entity{
         riders = new ArrayList<>();
     }
 
-    public int getId() {
-        return id;
-    }
-
     @Override
     public void run() {
-        System.out.format("Bus id%d arrived\n",id);
+        System.out.format("Bus %d arrived\n",id);
         try {
             this.environment.waitingMutux.acquire();
             int boarded = 0;
@@ -47,7 +43,12 @@ public class Bus implements Entity{
     private void depart(){
         System.out.format("Bus %d departed with:\n",id);
         for (Rider rider:riders) {
-            System.out.format("\t %d\n",rider.getId());
+            System.out.format("\t %d\n",rider.getEntityId());
         }
+    }
+
+    @Override
+    public int getEntityId() {
+        return this.id;
     }
 }

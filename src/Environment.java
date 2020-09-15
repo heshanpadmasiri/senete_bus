@@ -24,7 +24,7 @@ public class Environment {
     }
 
     public void arrive(Entity entity){
-        entity.run();
+        entity.start();
     }
 
     public void startSimulation(long time) throws InterruptedException {
