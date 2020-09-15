@@ -8,12 +8,9 @@ public class Main {
             long riderMeanTime = Long.parseLong(args[1]) * 1000;
             environment = new Environment(busMeanTime, riderMeanTime);
         } else {
-            environment = new Environment(20 * 60, 30);
+            environment = new Environment(20 * 60 * 1000, 30 * 1000);
         }
-        try {
-            environment.startSimulation(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        environment.startSimulation();
     }
 }

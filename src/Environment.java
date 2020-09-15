@@ -34,12 +34,8 @@ public class Environment {
 
     public Bus getCurrentBus(){return currentBus;}
 
-    public void startSimulation(long time) throws InterruptedException {
+    public void startSimulation(){
         busSimulator.start();
         riderSimulator.start();
-
-        Thread.sleep(time);
-        busSimulator.end();
-        riderSimulator.end();
     }
 }
