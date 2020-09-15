@@ -18,6 +18,7 @@ public class Bus extends Entity {
         System.out.format("Bus %d arrived\n",id);
         try {
             this.environment.waitingMutux.acquire();
+            this.environment.setCurrentBus(this);
             int boarded = 0;
             while (boarded < 50){
                 Rider rider= environment.waitingQueue.poll();
@@ -25,9 +26,8 @@ public class Bus extends Entity {
                     break;
                 }
                 this.environment.busSemaphore.release();
-                rider.boardBus(this);
-                boarded++;
                 this.environment.boardedSemaphore.acquire();
+                boarded++;
             }
             this.environment.waitingMutux.release();
             depart();

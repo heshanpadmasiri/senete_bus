@@ -7,6 +7,8 @@ public class Environment {
     private long riderMinTime;
     private BusSimulator busSimulator;
     private RiderSimulator riderSimulator;
+    //ayesh
+    private Bus currentBus;
     public Queue<Rider> waitingQueue;
     public Semaphore waitingMutux;
     public Semaphore busSemaphore;
@@ -26,6 +28,12 @@ public class Environment {
     public void arrive(Entity entity){
         entity.start();
     }
+
+    public void setCurrentBus(Bus bus){
+        this.currentBus = bus;
+    }
+
+    public Bus getCurrentBus(){return currentBus;}
 
     public void startSimulation(long time) throws InterruptedException {
         busSimulator.start();

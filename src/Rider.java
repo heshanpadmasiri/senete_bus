@@ -20,7 +20,7 @@ public class Rider extends Entity {
             this.environment.waitingMutux.release();
 
             this.environment.busSemaphore.acquire();
-            // todo: board bus
+            this.boardBus(this.environment.getCurrentBus());
             this.environment.boardedSemaphore.release();
         } catch (InterruptedException e) {
             e.printStackTrace();
