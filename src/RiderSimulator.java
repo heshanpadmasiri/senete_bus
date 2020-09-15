@@ -9,7 +9,6 @@ public class RiderSimulator  extends  Simulator{
             try {
                 Thread.sleep(this.min_wait);
                 Rider rider = new Rider(this.environment);
-                System.out.format("Rider %d created \n",rider.getId());
                 environment.arrive(rider);
             } catch (InterruptedException e) {
                 break;
